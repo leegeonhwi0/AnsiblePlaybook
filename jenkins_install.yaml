@@ -1,6 +1,6 @@
 ---
 - name: Upgrade Jenkins on CentOS 7 / RHEL
-  hosts: localhost
+  hosts: CentOS
   become: true
   tasks:
     - name: Download Jenkins repository file # 젠킨스 repository 주소 등록
