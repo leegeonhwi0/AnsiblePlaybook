@@ -1,0 +1,39 @@
+- hosts: Ubuntu
+  become: yes
+  tasks:
+    - name: "Installing Docker dependencies"
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+        state: present
+
+    - name: "Adding Docker GPG key"
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: "Adding Docker repository"
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+        filename: docker-ce
+        mode: 0644
+
+    - name: "Updating apt packages"
+      apt:
+        update_cache: yes
+
+    - name: "Installing Docker latest version"
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: "Starting and Enabling Docker service"
+      service:
+        name: docker
+        state: started
+        enabled: yes
