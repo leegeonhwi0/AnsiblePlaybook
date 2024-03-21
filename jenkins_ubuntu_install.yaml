@@ -1,0 +1,47 @@
+---
+- name: install jenkins_ubuntu_install.yaml
+  hosts: Ubuntu
+  become: true
+  tasks:
+    - name: Configuring Jenkins repo
+      apt_repository: # Using apt_repository module for Ubuntu
+        repo: deb https://pkg.jenkins.io/debian-stable binary/
+        state: present
+        filename: jenkins
+        validate_certs: no
+
+    - name: Add Jenkins repository GPG key
+      apt_key:
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+        state: present
+        validate_certs: no
+
+    - name: Update apt packages
+      apt:
+        update_cache: yes
+
+    - name: Install fontconfig
+      apt:
+        name: fontconfig
+        state: present
+
+
+    - name: Install Jenkins
+      apt:
+        name: jenkins
+        state: present
+
+    - name: Start Jenkins service
+      service:
+        name: jenkins
+        state: started
+        enabled: yes
+
+    - name: Show Jenkins initialAdminPassword
+      shell: |
+        cat /var/lib/jenkins/secrets/initialAdminPassword
+      register: shell_output
+
+    - name: Print to console
+      debug:
+        msg: "{{ shell_output.stdout }}"
