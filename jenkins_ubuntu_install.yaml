@@ -9,6 +9,15 @@
         name: ca-certificates
         state: present
 
+    - name: Install curl
+      apt:
+        name: curl
+        state: present
+
+    - name: Update apt packages
+      apt:
+        update_cache: yes
+
     - name: Import Jenkins GPG key
       shell: wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
       args:
