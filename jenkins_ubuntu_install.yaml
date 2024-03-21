@@ -18,10 +18,11 @@
       apt:
         update_cache: yes
 
-    - name: Import Jenkins GPG key
-      shell: wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-      args:
-        executable: /bin/bash
+    - name: Add Jenkins GPG key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 5BA31D57EF5975CA
+        state: present
 
     - name: Add Jenkins repository
       shell: sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
