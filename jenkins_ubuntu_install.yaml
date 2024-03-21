@@ -1,9 +1,7 @@
----
 - name: install jenkins_ubuntu_install.yaml
   hosts: tag_OS_ubuntu
   become: true
   tasks:
-
     - name: Install ca-certificates package
       apt:
         name: ca-certificates
@@ -25,13 +23,10 @@
         state: present
 
     - name: Add Jenkins repository
-      shell: sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-      args:
-        executable: /bin/bash
-
-    - name: Update apt packages
-      apt:
-        update_cache: yes
+      apt_repository:
+        repo: deb http://pkg.jenkins.io/debian-stable binary/
+        state: present
+        filename: jenkins
 
     - name: Install fontconfig
       apt:
