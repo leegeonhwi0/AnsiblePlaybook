@@ -1,5 +1,5 @@
 ---
-- name: Upgrade Jenkins on CentOS 7 / RHEL
+- name: Install Jenkins on CentOS 7 / RHEL
   hosts: CentOS
   become: true
   tasks:
@@ -9,18 +9,18 @@
         dest: "/etc/yum.repos.d/jenkins.repo"
         validate_certs: no
 
-    - name: Import Jenkins repository GPG key # 젠킨스 파일 검증 실행
+    - name: Import Jenkins repository GPG key # 젠킨스 키 등록
       rpm_key:
         key: "https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key"
         state: present
         validate_certs: no
 
-    - name: install fontconfig # 젠킨스 실행을 위한 폰트 설정 인스톨
+    - name: Install fontconfig # 젠킨스 실행을 위한 폰트 설정 인스톨
       yum:
         name: fontconfig
         state: latest
 
-    - name: install Jenkins # 젠킨스 설치
+    - name: Install Jenkins # 젠킨스 설치
       yum:
         name: jenkins
         state: latest
@@ -31,7 +31,7 @@
         state: started
         enabled: yes
     
-    - name: 
+    - name: Show jenkins initialAdminPassword # 젠킨스 임시관리자비밀번호 표시
       shell: |
               cat /var/lib/jenkins/secrets/initialAdminPassword
       register: shell_output
