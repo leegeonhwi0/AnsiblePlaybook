@@ -1,8 +1,14 @@
 ---
 - name: install jenkins_ubuntu_install.yaml
-  hosts: Ubuntu
+  hosts: tag_OS_ubuntu
   become: true
   tasks:
+
+    - name: Install ca-certificates package
+      apt:
+        name: ca-certificates
+        state: present
+
     - name: Import Jenkins GPG key
       apt_key:
         url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
