@@ -1,0 +1,16 @@
+---
+- name: Configure MySQL Docker container
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Run MySQL Docker container # mysql 도커 컨테이너 다운로드 및 설치
+      docker_container:
+        name: mysqldb
+        image: mysql_5.7
+        state: started
+        restart_policy: always
+        env:
+          MYSQL_ROOT_PASSWORD: education
+          MYSQL_DATABASE: guestbook
+        ports:
+          - "3306:3306"

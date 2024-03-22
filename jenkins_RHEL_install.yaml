@@ -25,7 +25,7 @@
       yum:
         name: jenkins
         state: latest
-
+    
     - name: Start Jenkins service # 젠킨스 실행 후 enable 설정
       service:
         name: jenkins

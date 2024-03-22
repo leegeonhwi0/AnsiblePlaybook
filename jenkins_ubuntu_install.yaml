@@ -23,29 +23,29 @@
         id: 5BA31D57EF5975CA
         state: present
 
-    - name: Add Jenkins repository # jenkins 
+    - name: Add Jenkins repository # jenkins 레포지토리 등록
       apt_repository:
         repo: deb http://pkg.jenkins.io/debian-stable binary/
         state: present
         filename: jenkins
 
-    - name: Install fontconfig
+    - name: Install fontconfig # 젠킨스에 사용되는 fontconfig 설치
       apt:
         name: fontconfig
         state: present
 
-    - name: Install Jenkins
+    - name: Install Jenkins # 젠킨스 최근 버전 설치
       apt:
         name: jenkins
         state: present
 
-    - name: Start Jenkins service
+    - name: Start Jenkins service # 젠킨스 서비스 시작
       service:
         name: jenkins
         state: started
         enabled: yes
 
-    - name: Show Jenkins initialAdminPassword
+    - name: Show Jenkins initialAdminPassword # 젠킨스 시작 관리자 패스워드 표시
       shell: cat /var/lib/jenkins/secrets/initialAdminPassword
       register: shell_output
 

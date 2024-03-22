@@ -3,6 +3,7 @@
   hosts: CentOS
   become: true
   tasks:
+
     - name: Download Java 17 RPM package # 자바 17 레포지토리 등록
       get_url:
         url: "https://download.java.net/java/17/latest/jdk-17_linux-x64_bin.rpm"
