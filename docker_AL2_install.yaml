@@ -1,0 +1,20 @@
+---
+- hosts: AL2
+  become: yes
+  tasks:
+    - name: "Installing Docker yum-utils"
+      yum:
+        name:
+          - yum-utils
+        state: latest
+
+    - name: "Installing Docker latest version"
+      yum:
+        name: docker-ce
+        state: present
+
+    - name: "Starting and Enabling Docker service"
+      service:
+        name: docker
+        state: started
+        enabled: yes
