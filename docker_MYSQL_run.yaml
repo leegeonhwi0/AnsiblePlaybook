@@ -2,6 +2,18 @@
 - name: Configure MySQL Docker container
   hosts: ec2-user
   become: yes
+  vars:
+      ansible_python_interpreter: /usr/bin/python3
+  tasks:
+
+    - name: Install urllib3 version 1.26.8
+      pip:
+        name: urllib3==1.26.8
+
+    - name: docker-py install
+      pip:
+        name: docker-py
+        executable: pip3
   tasks:
     
     - name: Install urllib3 version 1.26.8 # 아마존리눅스에는 없는 urllib3 설치
