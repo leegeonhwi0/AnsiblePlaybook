@@ -2,15 +2,15 @@
 - name: Configure MySQL Docker container
   hosts: ec2-user
   become: yes
-  vars:
-      ansible_python_interpreter: /usr/bin/python3
+  vars:                   
+      ansible_python_interpreter: /usr/bin/python3 # ansible이 /usr/bin/python3의 인터프리터를 찾아가도록 변수설정
   tasks:
 
-    - name: Install urllib3 version 1.26.8
+    - name: Install urllib3 version 1.26.8 # url 라이브러리3 설치
       pip:
         name: urllib3==1.26.8
 
-    - name: docker-py install
+    - name: docker-py install # docker전용 python 라이브러리 설치
       pip:
         name: docker-py
         executable: pip3
