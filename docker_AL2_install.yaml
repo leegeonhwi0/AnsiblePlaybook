@@ -2,15 +2,19 @@
 - hosts: AL2
   become: yes
   tasks:
-    - name: "Installing Docker yum-utils"
+    - name: "Installing yum-utils"
       yum:
         name:
           - yum-utils
         state: latest
+    
+    - name: "amazon-linux-extras Docker repo enable"
+      command: amazon-linux-extras enable docker
+      changed_when: false
 
     - name: "Installing Docker latest version"
       yum:
-        name: docker-ce
+        name: docker
         state: present
 
     - name: "Starting and Enabling Docker service"
