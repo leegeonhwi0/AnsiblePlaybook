@@ -22,3 +22,15 @@
         name: docker
         state: started
         enabled: yes
+
+    - name: Add jenkins user to docker group
+      user:
+        name: jenkins
+        groups: docker
+        append: yes
+
+    - name: Add jenkins user to docker group
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes

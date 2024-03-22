@@ -16,7 +16,7 @@
       apt:
         update_cache: yes
         
-    - name: Install Java 17 Debian package
+    - name: Install Java 17 Debian package # java 17 Debian 패키지 인스톨
       apt:
         deb: "/tmp/jdk-17_linux-x64_bin.deb"
         state: present
