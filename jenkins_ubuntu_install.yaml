@@ -2,27 +2,28 @@
   hosts: tag_OS_ubuntu
   become: true
   tasks:
-    - name: Install ca-certificates package
+  
+    - name: Install ca-certificates package # apt 인증서 패키지 설치
       apt:
         name: ca-certificates
         state: present
 
-    - name: Install curl
+    - name: Install curl # curl 커맨드 설치
       apt:
         name: curl
         state: present
 
-    - name: Update apt packages
+    - name: Update apt packages # apt 패키지 업데이트
       apt:
         update_cache: yes
 
-    - name: Add Jenkins GPG key
+    - name: Add Jenkins GPG key # ubutnu key서버에서 jenkins apt key 다운로드
       apt_key:
         keyserver: keyserver.ubuntu.com
         id: 5BA31D57EF5975CA
         state: present
 
-    - name: Add Jenkins repository
+    - name: Add Jenkins repository # jenkins 
       apt_repository:
         repo: deb http://pkg.jenkins.io/debian-stable binary/
         state: present
