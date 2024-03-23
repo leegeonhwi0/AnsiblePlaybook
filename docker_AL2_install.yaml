@@ -29,7 +29,7 @@
         groups: docker
         append: yes
 
-    - name: Add jenkins user to docker group
+    - name: Add jenkins user to docker group # Jenkins 사용환경을 위한 docker group 추가 설정
       user:
         name: ec2-user
         groups: docker
