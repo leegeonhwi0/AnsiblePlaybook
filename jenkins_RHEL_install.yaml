@@ -1,6 +1,6 @@
 ---
 - name: Install Jenkins on CentOS 7 / RHEL
-  hosts: ec2-user
+  hosts: localhost
   become: true
   tasks:
 
