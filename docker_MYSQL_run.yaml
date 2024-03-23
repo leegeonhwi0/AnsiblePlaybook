@@ -25,7 +25,7 @@
         name: docker-py
         executable: pip3
 
-    - name: Run MySQL Docker container # mysql 도커 컨테이너 다운로드 및 설치
+    - name: Run MySQL Docker container # mysql 도커 컨테이너 RUN
       docker_container:
         name: mysqldb
         image: mrsono0/mysql_5.7
