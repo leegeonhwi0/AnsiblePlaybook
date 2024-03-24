@@ -1,6 +1,6 @@
 ---
-- name: Install Java 17 CentOS 7 / RHEL
-  hosts: ec2-user
+- name: Install Java 17 AL2
+  hosts: localhost
   become: true
   tasks:
 
