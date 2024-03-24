@@ -1,5 +1,5 @@
 ---
-- hosts: ec2-user
+- hosts: all
   become: yes
   tasks:
     - name: "Installing yum-utils" # yum-utils 인스톨
