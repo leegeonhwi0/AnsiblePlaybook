@@ -1,6 +1,6 @@
 ---
 - name: Install Java 17 CentOS 7 / RHEL
-  hosts: CentOS
+  hosts: all
   become: true
   tasks:
 
