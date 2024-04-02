@@ -3,7 +3,6 @@
   hosts: Ubuntu
   become: true
   tasks:
-    
     - name: Install curl # curl 커맨드 설치
       apt:
         name: curl
@@ -15,7 +14,7 @@
     - name: Update apt packages # apt 업데이트
       apt:
         update_cache: yes
-        
+
     - name: Install Java 17 Debian package # java 17 Debian 패키지 인스톨
       apt:
         deb: "/tmp/jdk-17_linux-x64_bin.deb"
