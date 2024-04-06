@@ -16,6 +16,11 @@
         - name: End the play for hosts that are already setup
           meta: end_host
           when: kubeletSet.matched > 0
+    
+    - name: Install iproute-tc package
+      yum:
+        name: iproute-tc
+        state: present
 
     - name: Install containerd
       block:
