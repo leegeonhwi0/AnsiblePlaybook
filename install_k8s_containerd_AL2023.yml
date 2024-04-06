@@ -160,12 +160,9 @@
             - kubectl
       tags: kubernetes_packages
 
-    - name: Enable and start kubelet
+    - name: Enable kubelet
       service:
         name: kubelet
         enabled: yes
-        state: started
-      tags: kubelet
-    
 
     
