@@ -38,3 +38,10 @@
         regexp: '^127\.0\.1\.1'
         line: '127.0.1.1 {{ new_hostname_result.stdout }}'
         state: present
+
+    - name: Update /etc/hosts
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        regexp: '^127\.0\.1\.1'
+        line: '::1  localhost6 localhost6.localdomain6'
+        state: present
