@@ -1,6 +1,6 @@
 ---
 - name: Copy file with owner and permissions
-  hosts: localhost
+  hosts: all
   gather_facts: no
   become: true
   become_method: sudo
