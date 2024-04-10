@@ -8,7 +8,7 @@
     - name: Get all host keys
       delegate_to: "{{ jump_host|default('localhost') }}"
       # access host's ansible_host explicitly as 'ansible_host' will change to localhost or jump_host if not defined
-      command: "ssh-keyscan -t ecdsa -p {{ansible_port|default(22)}} {{hostvars[inventory_hostname].ansible_host|default(inventory_hostname)}}"
+      command: "ssh-keyscan -t rsa -p {{ansible_port|default(22)}} {{hostvars[inventory_hostname].ansible_host|default(inventory_hostname)}}"
       register: "host_keys"
       changed_when: false
 
