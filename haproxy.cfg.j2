@@ -90,7 +90,7 @@ backend app
     server  app4 127.0.0.1:5004 check
 
 frontend kube-controller
-    bind {{ private_ip }}:6443
+    bind *:6443
     mode tcp
     option tcplog
     default_backend kube-controller
